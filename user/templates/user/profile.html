@@ -1,34 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block title %}個人資訊頁{% endblock %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人資訊</title>
-</head>
+<h1>Profile</h1>
+{% if user.is_authenticated %}
+<h2>{{user.username}}</h2><br>
+<ul>
+    <li>註冊時間:{{user.date_joined}}</li>
+    <li>
+        權限:
+        {% if user.is_superuser %}
+        上
+        {% else %}
+        下
+        {% endif %}
+    </li>
+    <li>email:{{user.email}}</li>
+    <li>最後登入:{{user.last_login}}</li>
+</ul>
+{% else %}
+<p><a href="{% url 'login' %}">請先登入</a></p>
+{% endif %}
 
-<body>
-    <h1>Profile</h1>
-    {% if user.is_authenticate %}
-    {{user}}<br>
-    <ul>
-        <li>註冊時間:{{user.date_joined}}</li>
-        <li>
-            權限:
-            {% if user.is_superuser %}
-            上
-            {% else %}
-            下
-            {% endif %}
-        </li>
-        <li>email:{{user.email}}</li>
-        <li>最後登入:{{user.last_login}}</li>
-    </ul>
-    <a href="{% url 'logout' %}">登出</a>
-    {% else %}
-    <p><a href="{% url 'login' %}">請先登入</a></p>
-    {% endif %}
-
-</body>
-
-</html>
+{% endblock %}
