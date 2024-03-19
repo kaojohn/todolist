@@ -5,19 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
+    <style>
+        #message {
+            color: brown;
+        }
+
+        body {
+            background-color: antiquewhite;
+        }
+
+        #navbar {
+            background-color: burlywood;
+            padding: 12px;
+
+        }
+
+        #container {
+            margin: 12px;
+            text-align: center;
+        }
+
+        .but_skin {
+            border-radius: 10px
+        }
+    </style>
+    {% block style %}
+
+    {% endblock %}
+
 </head>
 
 <body>
-    {% if user.is_authenticated %}
-    {{user.username}} <a href="{% url 'logout' %}">登出</a><br>
-    {% else %}
-    <a href="{% url 'login' %}">登入</a>
-    <a href="{% url 'register' %}">註冊</a>
-    {% endif %}
-    {% block content %}
+    <div id="navbar">
+        {% if user.is_authenticated %}
+        {{user.username}} <a href="{% url 'logout' %}">登出</a><br>
+        {% else %}
+        <a href="{% url 'login' %}">登入</a>
+        <a href="{% url 'register' %}">註冊</a>
+        {% endif %}
+    </div>
+    <div id="container">
+        {% block content %}
 
-    {% endblock %}
-    <p id="message">{{message}}</p>
+        {% endblock %}
+        <p id="message">{{message}}</p>
+    </div>
 
 </body>
 
