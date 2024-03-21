@@ -2,16 +2,40 @@
 {% block title %}首頁面{% endblock %}
 
 {% block style %}
+
+<style>
+    .todo-list {
+        background-color: rgb(219, 199, 162);
+        margin: 12px auto;
+        width: 500px;
+        height: 100px;
+    }
+
+    .date {
+        background-color: chocolate;
+        color: aliceblue;
+    }
+
+    .tex {
+        background-color: azure;
+        padding: 6px;
+    }
+</style>
+
 {% endblock %}
 
 {% block content %}
+
 <h1>{{user}} TodoList</h1>
 {% for todo in todos %}
-<ul style="list-style: none;">
-    <li>{{todo.created}}
-        {{todo.title}}
-        {{todo.text}}
-        {{todo.important}}</li>
-</ul>
+<div class="todo-list">
+    <p class="date">{{todo.created}}owari:{{todo.date_completed}}</p>
+    <h3 style="color: brown;">{{todo.title}}
+        {% if todo.important %}
+        ☆
+        {% endif %}
+    </h3>
+    <p class="tex">{{todo.text}}</p>
+</div>
 {% endfor %}
 {% endblock %}
