@@ -30,7 +30,8 @@
 {% for todo in todos %}
 <div class="todo-list">
     <p class="date">{{todo.created}}owari:{{todo.date_completed}}</p>
-    <h3 style="color: brown;">{{todo.title}}
+    <h3 style="color: brown;">
+        <a href="{% url 'view_todo' todo.id %}">{{todo.title}}</a>
         {% if todo.important %}
         ☆
         {% endif %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}待{% endblock %}
+{% block style %}
+
+<style>
+    .totext {
+        background-color: burlywood;
+        margin: 12px auto;
+        width: 500px;
+        height: 100px;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: flat;
+
+    }
+</style>
+
+{% endblock %}
+{% block content %}
+
+<h1>{{todo.title}}</h1>
+<div class="totext">{{todo.text}}</div>
+<br><a href="{% url 'todo' %}">go back</a>
+
+
+{% endblock %}
