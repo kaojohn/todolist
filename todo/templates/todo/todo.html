@@ -5,6 +5,13 @@
 {% endblock %}
 
 {% block content %}
-<h1>TodoList</h1>
-
+<h1>{{user}} TodoList</h1>
+{% for todo in todos %}
+<ul style="list-style: none;">
+    <li>{{todo.created}}
+        {{todo.title}}
+        {{todo.text}}
+        {{todo.important}}</li>
+</ul>
+{% endfor %}
 {% endblock %}

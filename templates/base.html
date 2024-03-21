@@ -24,10 +24,6 @@
             margin: 12px;
             text-align: center;
         }
-
-        .but_skin {
-            border-radius: 10px
-        }
     </style>
     {% block style %}
 
@@ -38,10 +34,14 @@
 <body>
     <div id="navbar">
         {% if user.is_authenticated %}
-        {{user.username}} <a href="{% url 'logout' %}">登出</a><br>
+        {{user.username}} <a href="{% url 'profile' %}">個人頁</a>
+        <a href="{% url 'logout' %}">登出</a>
+        <a href="{% url 'todo' %}">代辦</a>
+        <br>
         {% else %}
         <a href="{% url 'login' %}">登入</a>
         <a href="{% url 'register' %}">註冊</a>
+        <a href="{% url 'profile' %}">個人頁</a>
         {% endif %}
     </div>
     <div id="container">
