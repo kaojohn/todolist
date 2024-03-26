@@ -9,9 +9,6 @@
         width: 500px;
         height: 100px;
         text-align: center;
-        transition: transform 0.6s;
-        transform-style: flat;
-
     }
 </style>
 
@@ -20,7 +17,7 @@
 
 <h1>{{todo.title}}</h1>
 <div class="totext">{{todo.text}}</div>
-<br><a href="{% url 'todo' %}">go back</a>
+<br><a href="{% url 'todolist' %}">go back</a>
 
 
 {% endblock %}

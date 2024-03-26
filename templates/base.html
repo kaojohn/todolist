@@ -28,6 +28,10 @@
         ul {
             list-style: none;
         }
+
+        a {
+            margin-left: 12px;
+        }
     </style>
     {% block style %}
 
@@ -40,7 +44,8 @@
         {% if user.is_authenticated %}
         Hi <a href="{% url 'profile' %}">{{user.username}}</a>
         <a href="{% url 'logout' %}">登出</a>
-        <a href="{% url 'todo' %}">待辦</a>
+        <a href="{% url 'todolist' %}">待辦list</a>
+        <a href="{% url 'create_todo' %}">建立事項</a>
         <br>
         {% else %}
         <a href="{% url 'login' %}">登入</a>
