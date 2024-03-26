@@ -6,9 +6,10 @@
 <style>
     .todo-list {
         background-color: rgb(219, 199, 162);
-        margin: 12px auto;
-        width: 500px;
-        height: 100px;
+        margin: 36px auto;
+        width: 450px;
+        height: 200px;
+        border-radius: 12px;
     }
 
     .date {
@@ -18,7 +19,11 @@
 
     .tex {
         background-color: azure;
+        height: 80px;
+        border-radius: 6px;
         padding: 6px;
+        margin: 12px;
+
     }
 </style>
 
@@ -26,10 +31,20 @@
 
 {% block content %}
 
-<h1>{{user}} TodoList</h1>
+<h1>
+    {% if completed %}
+    {{user}} 完成list
+    {% else %}
+    {{user}} TodoList
+    {% endif %}
+</h1>
 {% for todo in todos %}
 <div class="todo-list">
-    <p class="date">{{todo.created}}owari:{{todo.date_completed}}</p>
+    <p class="date">{{todo.created}}
+        {% if todo.date_completed %}
+        完成時間:{{todo.date_completed}}
+        {% endif %}
+    </p>
     <h3 style="color: brown;">
         <a href="{% url 'view_todo' todo.id %}">{{todo.title}}</a>
         {% if todo.important %}
@@ -37,6 +52,7 @@
         {% endif %}
     </h3>
     <p class="tex">{{todo.text}}</p>
+    <a href="{% url 'delete_todo' todo.id %}" style="margin-bottom: 6px;" onclick="return confirmDelete()">刪除</a>
 </div>
 {% endfor %}
 {% endblock %}

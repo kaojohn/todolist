@@ -1,22 +1,24 @@
 {% extends 'base.html' %}
 {% block title %}待{% endblock %}
 {% block style %}
-
-<style>
-    .totext {
-        background-color: burlywood;
-        margin: 12px auto;
-        width: 500px;
-        height: 100px;
-        text-align: center;
-    }
-</style>
-
 {% endblock %}
 {% block content %}
 
 <h1>{{todo.title}}</h1>
-<div class="totext">{{todo.text}}</div>
+建立時間:{{todo.created}}<br>
+{% if todo.date_completed %}
+完成時間:{{todo.date_completed}}
+{% endif %}
+
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="更新" name="update">
+    <input type="submit" value="刪除" name="delete">
+
+</form>
+
 <br><a href="{% url 'todolist' %}">go back</a>
 
 
