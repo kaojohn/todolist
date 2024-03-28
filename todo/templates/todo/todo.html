@@ -53,6 +53,8 @@
     </h3>
     <p class="tex">{{todo.text}}</p>
     <a href="{% url 'delete_todo' todo.id %}" style="margin-bottom: 6px;" onclick="return confirmDelete()">刪除</a>
+    <a href="{% url 'completed_todo_byid' todo.id %}" style="margin-bottom: 6px;"
+        onclick="return confirmCompleted()">完成</a>
 </div>
 {% endfor %}
 {% endblock %}
